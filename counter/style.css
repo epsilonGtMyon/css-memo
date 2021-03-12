@@ -1,0 +1,26 @@
+h2 {
+  padding-left: 20px;
+  counter-increment: h2Counter;
+
+  /* h2より後の見出しはリセット */
+  counter-reset: h3Counter;
+}
+h2::before {
+  content: "[" counter(h2Counter) "].";
+}
+
+h3 {
+  padding-left: 40px;
+  counter-increment: h3Counter;
+}
+h3::before {
+  content: "[" counter(h3Counter) "].";
+}
+
+/* 
+ * counter-reset でクリアするみたい
+ * 複数指定できるみたい
+ */
+.resetCounter {
+  counter-reset: h2Counter h3Counter;
+}
