@@ -8,10 +8,13 @@ $primary: rgb(100, 200, 100);
 @import "~bulma/sass/utilities/initial-variables.sass";
 @import "~bulma/sass/utilities/functions.sass";
 
-
 $secondary: rgb(250, 200, 100);
+$secondary-invert: findColorInvert($secondary) !default;
+$secondary-light: findLightColor($secondary) !default;
+$secondary-dark: findDarkColor($secondary) !default;
+
 $custom-colors: (
-    'secondary': ($secondary, white)
+    'secondary': ($secondary, $secondary-invert, $secondary-light, $secondary-dark)
 );
 
 @import "~bulma/sass/utilities/derived-variables.sass";
