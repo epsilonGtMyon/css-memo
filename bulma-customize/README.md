@@ -1,4 +1,6 @@
 # bulma-customize
+bulma の 色をカスタマイズしたり、追加したり
+
 
 ## 準備
 ```
