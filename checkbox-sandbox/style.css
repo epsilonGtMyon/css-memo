@@ -1,8 +1,46 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.my-checkbox {
+  position: relative;
+
+  user-select: none;
+
+  display: inline-flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+.my-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+
+  /* チェックボックスを隠したいので-1で下に */
+  z-index: -1;
+}
+
+.my-checkbox .check-mark {
+  width: 1rem;
+  height: 1rem;
+
+  border: solid 1px rgb(0, 0, 0, 0.5);
+}
+
+.my-checkbox.is-primary .check-mark.is-checked {
+  background-color: blue;
+}
+.my-checkbox.is-danger .check-mark.is-checked {
+  background-color: red;
+}
+
+.my-checkbox .check-mark.is-checked::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 80%;
+
+  transform: rotate(45deg) translateX(20%) translateY(-20%);
+  border-bottom: 0.2em solid white;
+  border-right: 0.2em solid white;
+}
+
+.my-checkbox .check-label {
+  padding-left: 0.5em;
 }
