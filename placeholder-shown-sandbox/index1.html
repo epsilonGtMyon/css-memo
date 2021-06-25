@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index1</title>
+    <style>
+        .required:placeholder-shown {
+            background-color: rgb(255, 0, 0, 0.3);
+        }
+        
+    </style>
+</head>
+<body>
+    
+    必須とかに使える？※
+    <div>
+        placeholderあり
+        <input type="text" class="required" placeholder="text" autofocus />
+    </div>
+    <div>
+        placeholder空(Firefoxだと赤い)
+        <input type="text" class="required" placeholder="" autofocus />
+    </div>
+    <div>
+        placeholderにスペース
+        <input type="text" class="required" placeholder=" " autofocus />
+    </div>
+</body>
+</html>
