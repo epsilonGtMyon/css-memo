@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>index2</title>
     <style>
+      :root {
+        --color-primary: rgb(100, 100, 255);
+      }
       .my-input {
-        display: flex;
+        display: inline-flex;
         flex-direction: column;
         background-color: rgba(0, 0, 0, 0.1);
       }
@@ -17,7 +20,8 @@
         transition: transform 0.2s;
         transform: translateY(1.3rem) scale(1);
         transform-origin: 0 100%;
-        z-index:1
+        z-index:1;
+        user-select: none
       }
       .my-input-body {
         order: 2;
@@ -39,21 +43,34 @@
         transform: translateY(0) scale(0.7);
       }
 
-      
       .my-input:focus-within .my-input-title,
       .my-input:focus-within .my-input-border {
-        border-bottom-color: rgb(100, 100, 255);
-        color: rgb(100, 100, 255);
+        border-bottom-color: var(--color-primary);
+        color: var(--color-primary);
       }
     </style>
   </head>
   <body>
-    マテリアルデザインのインプットっぽいの
-    z-indexを使ってlabel forを使わないようにしてみた
+    <div>
+      マテリアルデザインのインプットっぽいの
+      z-indexを使ってlabel forを使わないようにしてみた
+    </div>
 
     <div class="my-input">
       <input type="text" class="my-input-body" placeholder=" "  />
-      <label class="my-input-title" >名前</label>
+      <label class="my-input-title" >姓</label>
+      <div class="my-input-border"></div>
+    </div>
+    
+    <div class="my-input">
+      <input type="text" class="my-input-body" placeholder=" "  />
+      <label class="my-input-title" >名</label>
+      <div class="my-input-border"></div>
+    </div>
+    
+    <div class="my-input">
+      <input type="text" class="my-input-body" placeholder=" "  />
+      <label class="my-input-title" >ほげ</label>
       <div class="my-input-border"></div>
     </div>
   </body>
