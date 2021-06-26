@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index2</title>
+    <style>
+      .my-input {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .my-input-title {
+        display: block;
+        order: 1;
+        transition: transform 0.2s;
+        transform: translateY(1.3rem) scale(1);
+        transform-origin: 0 100%;
+      }
+      .my-input-body {
+        order: 2;
+        background-color: transparent;
+        border: none;
+        outline-style: none;
+      }
+      .my-input-body::placeholder {
+        color: transparent;
+      }
+      .my-input-border {
+        order: 3;
+        border-bottom: 2px solid black;
+      }
+
+      .my-input-body:not(:placeholder-shown) ~ .my-input-title,
+      .my-input:focus-within .my-input-title {
+        transform: translateY(0) scale(0.7);
+      }
+
+      
+      .my-input:focus-within .my-input-title,
+      .my-input:focus-within .my-input-border {
+        border-bottom-color: rgb(100, 100, 255);
+        color: rgb(100, 100, 255);
+      }
+    </style>
+  </head>
+  <body>
+    マテリアルデザインのインプットっぽいの
+
+    <div class="my-input">
+      <input type="text" id="name" class="my-input-body" placeholder=" "  />
+      <!-- label でforにしないと labelが前面にきているのでクリックしてもinputにフォーカスが当たらない-->
+      <label class="my-input-title" for="name">名前</label>
+      <div class="my-input-border"></div>
+    </div>
+  </body>
+</html>
