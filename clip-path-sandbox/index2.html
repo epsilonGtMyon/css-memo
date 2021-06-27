@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index1</title>
+    <style>
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            cursor: pointer;
+            transition: clip-path 0.5s;
+
+        }
+        .is-circle-enable {
+            clip-path: circle(100%);
+        }
+        .is-circle {
+            clip-path: circle(50%);
+        } 
+
+        
+        .is-triangle-enable {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        .is-triangle {
+            clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+        } 
+
+    </style>
+</head>
+<body>
+    <h1>アニメーションをつける</h1>
+    <h2>円</h2>
+    同一の種類(circle)とかじゃないとダメっぽい
+    <div class="square is-circle-enable"></div>
+
+    
+    <h2>多角形</h2>
+    polygonだと変の数が同じじゃないとダメ？
+
+    <div class="square is-triangle-enable"></div>
+
+    <script>
+        const nodeList = document.querySelectorAll('.is-circle-enable');
+        nodeList.forEach(nd => {
+            nd.addEventListener('click', ()=> {
+                if(nd.classList.contains('is-circle')){
+                    nd.classList.remove('is-circle')
+                } else {
+                    nd.classList.add('is-circle')
+                }
+            })
+        })
+
+        
+        const nodeList2 = document.querySelectorAll('.is-triangle-enable');
+        nodeList2.forEach(nd => {
+            nd.addEventListener('click', ()=> {
+                if(nd.classList.contains('is-triangle')){
+                    nd.classList.remove('is-triangle')
+                } else {
+                    nd.classList.add('is-triangle')
+                }
+            })
+        })
+    </script>
+</body>
+</html>

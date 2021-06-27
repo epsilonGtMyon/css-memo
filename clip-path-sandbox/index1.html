@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index1</title>
+    <style>
+        .is-flex {
+            display: flex;
+        }
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            cursor:pointer;
+        }
+        .shadow {
+            filter: drop-shadow(0 0 5px black);
+        }
+        .clip-circle {
+            clip-path: circle(50%)
+        }
+        .clip-parallelogram {
+            clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>clip-pathを試す</h1>
+    <a href="https://developer.mozilla.org/ja/docs/Web/CSS/basic-shape" rel="noopener noreferrer">basic-shape</a>
+
+    <div class="is-flex">
+        <div class="square shadow">
+        </div>
+        
+        <div class="square clip-circle">
+        </div>
+
+        <div class="square clip-parallelogram">
+        </div>
+
+    </div>
+
+    <h1>影をつける</h1>
+    影をつけるにはwrapする要素を作る
+    
+    <div class="is-flex">
+        <div class="shadow">
+            <div class="square clip-circle">
+            </div>
+        </div>
+        
+        <div class="shadow">
+            <div class="square clip-parallelogram">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
