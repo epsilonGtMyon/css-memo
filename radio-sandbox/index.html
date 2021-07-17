@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* ルート */
+      .myRadio {
+        display: inline-flex;
+        align-items: center;
+
+        position: relative;
+        cursor: pointer;
+      }
+
+      /* 内部で持ってるradio(非表示) */
+      .myRadio-radio {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+      /* 自前で作るradio */
+      .myRadio-body {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        border: 2px solid gray;
+      }
+
+      /* radioにチェックされたときの●マーク */
+      .myRadio-body::before {
+        content: "";
+
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+
+        transition: transform 0.1s ease-out;
+        transform: scale(0);
+      }
+      /* チェックされたとき */
+      .myRadio-radio:checked + .myRadio-body::before {
+        transform: scale(0.6);
+      }
+
+      .myRadio.is-primary .myRadio-body::before {
+        background-color: green;
+      }
+      .myRadio.is-danger .myRadio-body::before {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <label class="myRadio is-primary">
+        <input class="myRadio-radio" type="radio" name="blood" value="A" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">A</span>
+      </label>
+
+      <label class="myRadio is-primary">
+        <input class="myRadio-radio" type="radio" name="blood" value="B" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">B</span>
+      </label>
+
+      <label class="myRadio is-primary">
+        <input class="myRadio-radio" type="radio" name="blood" value="AB" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">AB</span>
+      </label>
+
+      <label class="myRadio is-primary">
+        <input class="myRadio-radio" type="radio" name="blood" value="O" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">O</span>
+      </label>
+    </div>
+
+    <div>
+      <label class="myRadio is-danger">
+        <input class="myRadio-radio" type="radio" name="kikite" value="right" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">right</span>
+      </label>
+
+      <label class="myRadio is-danger">
+        <input class="myRadio-radio" type="radio" name="kikite" value="left" />
+        <span class="myRadio-body"></span>
+        <span class="myRadio-label">left</span>
+      </label>
+    </div>
+  </body>
+</html>
