@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .water {
+      height: 100px;
+      width: 100px;
+    }
+    .water-wave {
+      background-color:blue;
+      height: 10%;
+      animation: animate 1s ease-in-out infinite;
+    }
+    .water-base {
+      
+      background-color:blue;
+      height: calc(100% - 10%);
+    }
+
+    @keyframes animate {
+      0%, 100% {
+        clip-path: polygon(0 1%, 7% 9%, 12% 21%, 14% 54%, 20% 92%, 22% 98%, 34% 91%, 38% 76%, 39% 59%, 39% 41%, 41% 26%, 44% 11%, 47% 1%, 53% 0%, 63% 3%, 66% 19%, 68% 34%, 68% 59%, 71% 78%, 73% 89%, 76% 97%, 83% 100%, 89% 90%, 92% 76%, 94% 57%, 96% 28%, 100% 0, 100% 99%, 0% 100%);
+      }
+      50% {
+        clip-path: polygon(0 100%, 5% 100%, 12% 30%, 15% 14%, 19% 3%, 29% 0, 36% 3%, 39% 37%, 40% 57%, 45% 81%, 48% 84%, 48% 94%, 51% 100%, 57% 100%, 64% 100%, 68% 20%, 74% 0, 77% 0, 83% 1%, 86% 15%, 89% 18%, 90% 27%, 91% 45%, 92% 76%, 93% 82%, 95% 90%, 100% 98%, 100% 99%, 0% 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>水面みたいなやつ</h1>
+  
+  <section>
+    <div class="water">
+        <div class="water-space"></div>
+        <div class="water-wave"></div>
+        <div class="water-base"></div>
+    </div>
+
+    <input type="range" id="waterAmount" min="0" max="100" value="50" step="1">
+    <span id="waterAmountText">50</span>
+  </section>
+
+  
+  <h2>参考</h2>
+  <ul>
+    <li><a href="https://www.youtube.com/watch?v=G4CRBvx-pac">https://www.youtube.com/watch?v=G4CRBvx-pac</a></li>
+    <li><a href="https://bennettfeely.com/clippy/">https://bennettfeely.com/clippy/</a></li>
+  </ul>
+
+  <script type="text/javascript">
+  (function(){
+    const waterSpaceElem = document.querySelector('.water-space')
+    const waterBaseElem = document.querySelector('.water-base')
+
+    const waterAmountElem = document.querySelector('#waterAmount')
+    const waterAmountTextElem = document.querySelector('#waterAmountText')
+    waterAmountElem.addEventListener('input', (ev) => {
+      const num = Number(event.target.value)
+      waterAmountTextElem.textContent = num;
+
+      waterSpaceElem.style.height = `${100 - (num / 100 * 90) - 10}%`
+      waterBaseElem.style.height = `${num / 100 * 90}%`
+    })
+
+  })()
+  </script>
+</body>
+</html>
