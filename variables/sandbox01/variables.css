@@ -1,0 +1,13 @@
+:root {
+  --ep-color-primary: rgb(0, 128, 0);
+  --ep-color-primary-invert: rgb(255, 255, 255);
+  --ep-color-primary-light: rgb(101, 255, 101);
+  --ep-color-primary-dark: rgb(0, 71, 0);
+}
+
+.ep-theme-blue {
+  --ep-color-primary: rgb(31, 31, 255);
+  --ep-color-primary-invert: rgb(255, 255, 255);
+  --ep-color-primary-light: rgb(101, 101, 255);
+  --ep-color-primary-dark: rgb(0, 0, 128);
+}

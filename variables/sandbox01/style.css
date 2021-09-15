@@ -1,0 +1,35 @@
+/* button */
+.ep-button {
+  margin: .25rem .125rem;
+  cursor: pointer;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+}
+
+.ep-button.is-primary {
+  background-color: var(--ep-color-primary);
+  color: var(--ep-color-primary-invert);
+}
+.ep-button.is-primary:hover,
+.ep-button.is-primary:active {
+  background-color: var(--ep-color-primary-dark);
+}
+
+/* card */
+.ep-card {
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3)
+}
+.ep-cardHeader {
+  padding: .375rem .75rem;
+}
+.ep-card.is-primary .ep-cardHeader {
+  background-color: var(--ep-color-primary);
+  color: var(--ep-color-primary-invert);
+}
+.ep-cardBody {
+  padding: .375rem .75rem;
+  white-space: pre-wrap;
+}
