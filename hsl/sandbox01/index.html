@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSL</title>
+
+  <style>
+    #result {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>HSLで遊ぶ</h1>
+
+  <section>
+    <div>
+      hue(色相):
+      <input type="range" id="hue" min="0" max="360" value="0"/>
+      <span id="hueValue">0</span>
+    </div>
+    <div>
+      saturation(彩度):
+      <input type="range" id="saturation" min="0" max="100" value="100"/>
+      <span id="saturationValue">100</span>
+    </div>
+    <div>
+      lightness(輝度):
+      <input type="range" id="lightness" min="0" max="100" value="50"/>
+      <span id="lightnessValue">50</span>
+    </div>
+    <span id="resultValue"></span>
+    <div id="result"></div>
+  </section>
+
+  <section>
+    <p>
+      Hは360度で0度が赤(R), 120度が緑(G), 240度が(B)に対応している<br/>
+      それぞれの間の色は60度が黄色, 180度が水色, 300度が紫
+    </p>
+    <p>
+      Sは0が灰色、100が本来の色？
+    </p>
+    <p>
+      Lは明るさ 0だと黒, 100だと白
+    </p>
+
+    <p>
+      RGBと違って明るさの調整や、反対側の色を見つけやすい
+    </p>
+  </section>
+  
+  一応これでもHSLで入力できるみたい(Chromeで確認)
+  <input type="color" id="inputColor" />
+
+  <script>
+    (function(){
+      const hueElem = document.getElementById('hue')
+      const hueValueElem = document.getElementById('hueValue')
+
+      const saturationElem = document.getElementById('saturation')
+      const saturationValueElem = document.getElementById('saturationValue')
+
+      const lightnessElem = document.getElementById('lightness')
+      const lightnessValueElem = document.getElementById('lightnessValue')
+
+      const resultElem = document.getElementById('result')
+      const resultValueElem = document.getElementById('resultValue')
+
+      const inputColorElem = document.getElementById('inputColor')
+
+      function updateResult(){
+        const hue = hueElem.value
+        const saturation = saturationElem.value
+        const lightness = lightnessElem.value
+
+        const hsl = `hsl(${hue}, ${saturation}%, ${lightness}%)`
+        resultElem.style.backgroundColor = hsl;
+        resultValueElem.textContent = hsl
+      }
+
+      hueElem.addEventListener('input', (ev)=> {
+        hueValueElem.textContent = ev.target.value
+        updateResult()
+      })
+      saturationElem.addEventListener('input', (ev)=> {
+        saturationValueElem.textContent = ev.target.value
+        updateResult()
+      })
+      lightnessElem.addEventListener('input', (ev)=> {
+        lightnessValueElem.textContent = ev.target.value
+        updateResult()
+      })
+      updateResult()
+    })()
+
+  </script>
+</body>
+</html>
