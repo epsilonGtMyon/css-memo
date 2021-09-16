@@ -1,13 +1,23 @@
-:root {
-  --ep-color-primary: rgb(0, 128, 0);
-  --ep-color-primary-invert: rgb(255, 255, 255);
-  --ep-color-primary-light: rgb(101, 255, 101);
-  --ep-color-primary-dark: rgb(0, 71, 0);
+:root, .ep-theme-default {
+  --ep-color-primary: hsl(120, 100%, 34%);
+  --ep-color-primary-invert: hsl(120, 50%, 100%);
+  --ep-color-primary-light: hsl(120, 50%, 50%);
+  --ep-color-primary-dark: hsl(120, 50%, 15%);
+  
+  --ep-color-secondary: hsl(76, 100%, 34%);
+  --ep-color-secondary-invert: hsl(76, 100%, 100%);
+  --ep-color-secondary-light: hsl(76, 100%, 50%);
+  --ep-color-secondary-dark: hsl(76, 100%, 15%);
 }
 
 .ep-theme-blue {
-  --ep-color-primary: rgb(31, 31, 255);
-  --ep-color-primary-invert: rgb(255, 255, 255);
-  --ep-color-primary-light: rgb(101, 101, 255);
-  --ep-color-primary-dark: rgb(0, 0, 128);
+  --ep-color-primary: hsl(250, 100%, 50%);
+  --ep-color-primary-invert: hsl(250, 100%, 100%);
+  --ep-color-primary-light: hsl(250, 100%, 50%);
+  --ep-color-primary-dark: hsl(250, 100%, 25%);
+  
+  --ep-color-secondary: hsl(180, 100%, 30%);
+  --ep-color-secondary-invert: hsl(180, 100%, 100%);
+  --ep-color-secondary-light: hsl(180, 100%, 75%);
+  --ep-color-secondary-dark: hsl(180, 100%, 12%);
 }

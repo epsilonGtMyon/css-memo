@@ -18,6 +18,15 @@
   background-color: var(--ep-color-primary-dark);
 }
 
+.ep-button.is-secondary {
+  background-color: var(--ep-color-secondary);
+  color: var(--ep-color-secondary-invert);
+}
+.ep-button.is-secondary:hover,
+.ep-button.is-secondary:active {
+  background-color: var(--ep-color-secondary-dark);
+}
+
 /* card */
 .ep-card {
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3)
@@ -28,6 +37,10 @@
 .ep-card.is-primary .ep-cardHeader {
   background-color: var(--ep-color-primary);
   color: var(--ep-color-primary-invert);
+}
+.ep-card.is-secondary .ep-cardHeader {
+  background-color: var(--ep-color-secondary);
+  color: var(--ep-color-secondary-invert);
 }
 .ep-cardBody {
   padding: .375rem .75rem;
