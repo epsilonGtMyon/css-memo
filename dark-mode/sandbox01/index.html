@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  :root {
+    --main-bg-color: hsl(360deg, 0%, 100%);
+    --main-color: hsl(360deg, 0%, 0%);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --main-bg-color: hsl(360deg, 0%, 0%);
+      --main-color: hsl(360deg, 0%, 100%);
+    }
+  }
+
+
+  body {
+    background-color: var(--main-bg-color);
+    color: var(--main-color)
+  }
+  </style>
+</head>
+<body>
+  <a href="../index.html">home</a>
+  <h1>ライト/ダーク テーマの対応</h1>
+  <p>
+    メディアクエリとCSS変数を組み合わせることで実現する
+    <code>
+      <pre>
+        :root {
+          --main-bg-color: hsl(360deg, 0%, 100%);
+          --main-color: hsl(360deg, 0%, 0%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --main-bg-color: hsl(360deg, 0%, 0%);
+            --main-color: hsl(360deg, 0%, 100%);
+          }
+        }
+
+        body {
+          background-color: var(--main-bg-color);
+          color: var(--main-color)
+        }
+      </pre>
+    </code>
+
+    このやり方だとOSの設定に引っ張られる
+  </p>
+</body>
+</html>
