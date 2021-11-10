@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dark-mode2</title>
+
+    <style>
+      
+    :root, .theme-light, .theme-system.systemTheme-light {
+      --main-bg-color: hsl(360deg, 0%, 100%);
+      --main-color: hsl(360deg, 0%, 0%);
+    }
+    .theme-dark, .theme-system.systemTheme-dark {
+      --main-bg-color: hsl(360deg, 0%, 0%);
+      --main-color: hsl(360deg, 0%, 100%);
+    }
+
+    body {
+      background-color: var(--main-bg-color);
+      color: var(--main-color)
+    }
+
+    </style>
+  </head>
+  <body>
+    <a href="../index.html">home</a>
+    <h1>ライト/ダーク テーマの対応2</h1>
+
+    <div>
+      <label>
+        <input type="radio" name="theme" value="light" checked />
+        ライト
+      </label>
+      <label>
+        <input type="radio" name="theme" value="dark" />
+        ダーク
+      </label>
+      <label>
+        <input type="radio" name="theme" value="system" />
+        システム
+      </label>
+    </div>
+
+    
+    <p>
+      window.matchMediaとCSS変数を組み合わせることで実現する
+      これだと、OSの設定を利用することもできるし、アプリ単独で上書きすることもできる
+      <code>
+        <pre>
+
+const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const handler = (ev) => {
+  // システムのテーマが変わったときのハンドリング処理を記述
+};
+// 初期状態
+changeSystemTheme(mediaQuery.matches)
+
+// changeイベントで メディアクエリの状態変化を検知することができる。
+mediaQuery.addEventListener("change", handler);
+        </pre>
+      </code>
+    </p>
+
+    <script>
+      (function () {
+        const htmlDom = document.querySelector("html");
+        const themes = document.querySelectorAll('input[name="theme"]');
+
+        /**
+         * アプリのテーマのクラス名を設定
+         * 
+         * @param {string} themeName アプリのテーマクラス名
+         */
+        function changeTheme(themeName) {
+          htmlDom.classList.forEach((className) => {
+            if (className.startsWith("theme")) {
+              htmlDom.classList.remove(className);
+            }
+          });
+          htmlDom.classList.add(`theme-${themeName}`)
+        }
+        
+        /**
+         * システムのテーマのクラス名を設定
+         * 
+         * @param {boolean} isDark システムのテーマがダークモードであるか？
+         */
+        function changeSystemTheme(isDark) {
+          htmlDom.classList.forEach((className) => {
+            if (className.startsWith("systemTheme")) {
+              htmlDom.classList.remove(className);
+            }
+          });
+          const systemThemeName = isDark ? "dark" : "light"
+          htmlDom.classList.add(`systemTheme-${systemThemeName}`)
+        }
+
+        //ラジオボタンのイベントハンドラ
+        themes.forEach((themeDom) => {
+          themeDom.addEventListener("input", (ev) => {
+            const themeValue = ev.target.value;
+            changeTheme(themeValue);
+          });
+        });
+
+        //------------------------------------
+
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const handler = (ev) => {
+          changeSystemTheme(ev.matches)
+        };
+        changeSystemTheme(mediaQuery.matches)
+
+        mediaQuery.addEventListener("change", handler);
+      })();
+    </script>
+  </body>
+</html>
