@@ -47,6 +47,7 @@
     <p>
       window.matchMediaとCSS変数を組み合わせることで実現する
       これだと、OSの設定を利用することもできるし、アプリ単独で上書きすることもできる
+      あとJavaScriptからOSのテーマ設定を取得することもできる
       <code>
         <pre>
 
@@ -111,9 +112,12 @@ mediaQuery.addEventListener("change", handler);
         const handler = (ev) => {
           changeSystemTheme(ev.matches)
         };
-        changeSystemTheme(mediaQuery.matches)
 
         mediaQuery.addEventListener("change", handler);
+
+        // 初期値
+        changeTheme('light')
+        changeSystemTheme(mediaQuery.matches)
       })();
     </script>
   </body>
