@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dark-mode3</title>
+
+    <style>
+      
+    :root {
+      --main-bg-color: hsl(360deg, 0%, 100%);
+      --main-color: hsl(360deg, 0%, 0%);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --main-bg-color: hsl(360deg, 0%, 0%);
+        --main-color: hsl(360deg, 0%, 100%);
+      }
+    }
+
+    .theme-light {
+      --main-bg-color: hsl(360deg, 0%, 100%);
+      --main-color: hsl(360deg, 0%, 0%);
+    }
+    .theme-dark {
+      --main-bg-color: hsl(360deg, 0%, 0%);
+      --main-color: hsl(360deg, 0%, 100%);
+    }
+
+    body {
+      background-color: var(--main-bg-color);
+      color: var(--main-color)
+    }
+
+    </style>
+  </head>
+  <body>
+    <a href="../index.html">home</a>
+    <h1>ライト/ダーク テーマの対応3</h1>
+
+    <div>
+      <label>
+        <input type="radio" name="theme" value="light" checked />
+        ライト
+      </label>
+      <label>
+        <input type="radio" name="theme" value="dark" />
+        ダーク
+      </label>
+      <label>
+        <input type="radio" name="theme" value="system" />
+        システム
+      </label>
+    </div>
+
+    
+    <p>
+      window.matchMedia 使わんでもできそう。 一応その２はmatchMediaのサンプルとして残しておく<br/>
+      このやり方だとstyleの定義が冗長になってしまう..
+
+      scss だとmixinとかでええ感じにできそう。
+      <code>
+        <pre>
+:root {
+  --main-bg-color: hsl(360deg, 0%, 100%);
+  --main-color: hsl(360deg, 0%, 0%);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg-color: hsl(360deg, 0%, 0%);
+    --main-color: hsl(360deg, 0%, 100%);
+  }
+}
+
+.theme-light {
+  --main-bg-color: hsl(360deg, 0%, 100%);
+  --main-color: hsl(360deg, 0%, 0%);
+}
+.theme-dark {
+  --main-bg-color: hsl(360deg, 0%, 0%);
+  --main-color: hsl(360deg, 0%, 100%);
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-color)
+}
+        </pre>
+      </code>
+
+    </p>
+
+    <script>
+      (function () {
+        const htmlDom = document.querySelector("html");
+        const themes = document.querySelectorAll('input[name="theme"]');
+
+        /**
+         * アプリのテーマのクラス名を設定
+         * 
+         * @param {string} themeName アプリのテーマクラス名
+         */
+        function changeTheme(themeName) {
+          htmlDom.classList.forEach((className) => {
+            if (className.startsWith("theme")) {
+              htmlDom.classList.remove(className);
+            }
+          });
+
+          if (themeName !== 'system') {
+            // システムテーマ以外の場合は追加
+            htmlDom.classList.add(`theme-${themeName}`)
+          }
+        }
+        
+
+        //ラジオボタンのイベントハンドラ
+        themes.forEach((themeDom) => {
+          themeDom.addEventListener("input", (ev) => {
+            const themeValue = ev.target.value;
+            changeTheme(themeValue);
+          });
+        });
+
+        changeTheme('light')
+
+      })();
+    </script>
+  </body>
+</html>
