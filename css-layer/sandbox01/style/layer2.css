@@ -1,0 +1,5 @@
+@layer layer2 {
+  div.myBox {
+    background-color: blue;
+  }
+}
