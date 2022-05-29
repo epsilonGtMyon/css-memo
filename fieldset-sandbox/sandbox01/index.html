@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fieldset</title>
+    <style>
+      input:disabled,
+      button:disabled {
+        background-color: red;
+      }
+
+      fieldset.my-fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>fieldset</h1>
+    <p>
+      <code>fieldset</code>に<code>disabled</code>をつけると
+      その中に含まれるinput自体もdisabledになる。
+    </p>
+    <p>
+      <code>input:disabled, button:disabled</code>などでスタイルを適用していた場合
+      そのスタイルも適用される。
+    </p>
+
+    <section>
+      <fieldset id="field">
+        <div>
+          <label
+            >text:
+            <input type="text" />
+          </label>
+        </div>
+        <div>
+          <label
+            >checkbox:
+            <input type="checkbox" />
+          </label>
+        </div>
+        <div>
+          <label>
+            select:
+            <select>
+              <option value="1">1</option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            radio:
+            <input type="radio" name="radio" value="1" />aaa
+          </label>
+          <label> <input type="radio" name="radio" value="1" />bbb </label>
+        </div>
+
+        <div>
+          <button onclick="alert('hello')">button</button>
+        </div>
+      </fieldset>
+
+      <button id="changeDisabledButton">有効/無効</button>
+    </section>
+
+    <section>
+      <p>
+        デフォルトではfieldset自体にスタイルが当たっているがこれは 上書きすることができる。
+        bulmaもリセットしている。
+      </p>
+      <button id="changeStyleButton">スタイル適用</button>
+    </section>
+
+    <script>
+      (function () {
+        const fieldElem = document.getElementById("field");
+        const changeDisabledButtonElem = document.getElementById(
+          "changeDisabledButton"
+        );
+        const changeStyleButtonElem =
+          document.getElementById("changeStyleButton");
+
+        changeDisabledButtonElem.addEventListener("click", () => {
+          fieldElem.disabled = !fieldElem.disabled;
+        });
+        changeStyleButtonElem.addEventListener("click", () => {
+          // if (fieldElem.classList.contains("my-fieldset")) {
+          //   fieldElem.classList.remove("my-fieldset");
+          // } else {
+          //   fieldElem.classList.add("my-fieldset");
+          // }
+          fieldElem.classList.toggle("my-fieldset");
+        });
+      })();
+    </script>
+  </body>
+</html>
