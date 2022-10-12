@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    body {
+      background-color:gray;
+    }
+    .is-maxLvh {
+      height: 100lvh;
+      background-color: rgb(255, 0, 0);
+    }
+    .is-maxSvh {
+      height: 100svh;
+      background-color: rgb(0, 255, 0);
+    }
+    .is-maxDvh {
+      height: 100dvh;
+      background-color: rgb(0, 0, 255);
+    }
+    .hoge {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="hoge">
+
+    <header class="hoge-header">
+      <a href="../index.html">home</a>
+      よくわからん...
+      <div>
+        header
+      </div>
+      <div>
+        <button id="maxLvh">
+          LVH
+        </button>
+        <button id="maxSvh">
+          SVH
+        </button>
+        <button id="maxDvh">
+          DVH
+        </button>
+      </div>
+    </header>
+    <footer class="hoge-footer">
+      footer
+    </footer>
+  </div>
+  
+
+  <script>
+    (function(){
+      const body = document.querySelector('body')
+      const maxLvhButton = document.getElementById('maxLvh')
+      const maxSvhButton = document.getElementById('maxSvh')
+      const maxDvhButton = document.getElementById('maxDvh')
+
+      function activateVh(vh) {
+        const classes = ['is-maxLvh', 'is-maxSvh', 'is-maxDvh']
+
+        classes.forEach(c => {
+          body.classList.remove(c)
+        })
+        body.classList.add(vh)
+
+      }
+
+      maxLvhButton.addEventListener('click',() => {
+        activateVh('is-maxLvh')
+      })
+      maxSvhButton.addEventListener('click',() => {
+        activateVh('is-maxSvh')
+      })
+      maxDvhButton.addEventListener('click',() => {
+        activateVh('is-maxDvh')
+      })
+    })()
+  </script>
+</body>
+</html>
