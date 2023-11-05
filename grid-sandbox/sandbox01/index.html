@@ -9,6 +9,8 @@
         display: grid;
         grid-template-columns: 100px 100px;
         grid-template-rows: 50px 50px;
+
+        grid-auto-rows: minmax(20px, auto);
       }
       .layout2 {
         display: grid;
@@ -73,12 +75,16 @@
   display: grid;
   grid-template-columns: 100px 100px;
   grid-template-rows: 50px 50px;
+
+  grid-auto-rows: minmax(20px, auto);
 }
 </code>
 grid-template-columnsで列の幅
 grid-template-rowsで行の高さを設定
 columnsの方が優先度高そう
 これだと5, 6は何も適用されていない
+
+grid-auto-rows を使うと暗黙的な行, 5, 6に対して設定ができる。
       </pre>
 
       <div class="layout1 demo1">

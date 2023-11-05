@@ -7,24 +7,113 @@
     <style>
       .layout1 {
         display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+        width: 80vw;
       }
+
+      .layout2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+        width: 80vw;
+      }
+
       .item {
         border: 1px solid gray;
         background-color: lightcyan;
       }
-      
     </style>
+    <script>
+      window.addEventListener("load", () => {
+        // layout1
+        const layout1Elem = document.getElementById("layout1");
+        const layout1ItemCountElem =
+          document.getElementById("layout1ItemCount");
+        const layout1changeElem = document.getElementById("layout1change");
+
+        // layout2
+        const layout2Elem = document.getElementById("layout2");
+        const layout2ItemCountElem =
+          document.getElementById("layout2ItemCount");
+        const layout2changeElem = document.getElementById("layout2change");
+
+        // 要素を満たす関数
+        function fillItems(containerElem, count) {
+          while (containerElem.firstChild) {
+            containerElem.removeChild(containerElem.firstChild);
+          }
+
+          for (let i = 0; i < count; i++) {
+            const divItem = document.createElement("div");
+            divItem.classList.add("item");
+            divItem.textContent = `${i + 1}`;
+            containerElem.appendChild(divItem);
+          }
+        }
+
+        layout1changeElem.addEventListener("click", () => {
+          fillItems(layout1Elem, layout1ItemCountElem.valueAsNumber);
+        });
+        layout2changeElem.addEventListener("click", () => {
+          fillItems(layout2Elem, layout2ItemCountElem.valueAsNumber);
+        });
+
+        layout1ItemCountElem.valueAsNumber = 4;
+        fillItems(layout1Elem, layout1ItemCountElem.valueAsNumber);
+
+        layout2ItemCountElem.valueAsNumber = 4;
+        fillItems(layout2Elem, layout2ItemCountElem.valueAsNumber);
+      });
+    </script>
   </head>
   <body>
     <a href="../index.html">home</a>
     <h1>grid2</h1>
 
     <main id="app">
+      <h2>auto-fill</h2>
 
+      <pre>
+        <code>
+.layout1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 
-      <div class="layout1">
-        
+  width: 80vw;
+}
+        </code>
+repeat()にauto-fillを使う, mixmaxと組み合わせる。
+      </pre>
+      <div id="layout1" class="layout1">
+        <div class="item"></div>
       </div>
-    </div>
+      <div>
+        <input type="number" id="layout1ItemCount" />
+        <button id="layout1change">layout1change</button>
+      </div>
+
+      <hr />
+      <h2>auto-fit</h2>
+      <pre>
+        <code>
+.layout2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  width: 80vw;
+}
+        </code>
+auto-fitを指定すると、要素の数が足りないときに満たしてくれる
+少ない数値を指定してみると違いがわかる
+      </pre>
+      <div id="layout2" class="layout2">
+        <div class="item"></div>
+      </div>
+      <div>
+        <input type="number" id="layout2ItemCount" />
+        <button id="layout2change">layout2change</button>
+      </div>
+    </main>
   </body>
 </html>
