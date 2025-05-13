@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>summary details</title>
+
+    <style>
+      .console-container {
+        background-color: rgb(10, 10, 10);
+        color: rgb(255, 255, 255);
+        overflow-y: scroll;
+        height: calc(100vh - 400px);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../index.html">home</a>
+
+    <div id="app">
+      
+      <p>
+        details要素のtoggleイベントを受け取ることができる。
+      </p>
+
+      <details id="myAccordion" style="height: 100px">
+        <summary>サマリー<span id="myAccordionState"></span></summary>
+        <div>詳細</div>
+      </details>
+
+      <button id="clearButton">clear</button>
+      <div class="console-container">
+        <div id="console" class="console"></div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const myAccordionElem = document.getElementById("myAccordion");
+        const myAccordionStateElem =
+          document.getElementById("myAccordionState");
+
+        myAccordionElem.addEventListener("toggle", (event) => {
+          console.log(event);
+          log(`event.oldState: ${event.oldState}, event.newState: ${event.newState}, event.target.open:${event.target.open}`);
+        });
+
+        // ---------------
+        const clearButtonElem = document.getElementById("clearButton");
+        const consoleElem = document.getElementById("console");
+
+        function clearConsole() {
+          while (consoleElem.firstChild) {
+            consoleElem.removeChild(consoleElem.firstChild);
+          }
+        }
+
+        function log(text) {
+          const div = document.createElement("div");
+          div.textContent = text;
+          consoleElem.append(div);
+          consoleElem.parentElement.scrollTo(
+            0,
+            consoleElem.parentElement.scrollHeight
+          );
+        }
+
+        clearButtonElem.addEventListener("click", () => {
+          clearConsole();
+        });
+      })();
+    </script>
+  </body>
+</html>
