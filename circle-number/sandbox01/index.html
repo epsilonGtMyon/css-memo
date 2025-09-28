@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>丸囲み数字</title>
+
+    <style>
+      .circle {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 1.5em;
+        width: 1.5em;
+        border-radius: 50%;
+        box-sizing: border-box;
+
+        padding-top: 0.1em;
+        padding-bottom: 0.25em;
+      }
+      .circle.is-red {
+        color: white;
+        background-color: red;
+      }
+
+      .circle.is-blue {
+        color: white;
+        background-color: blue;
+      }
+
+      .box {
+        border: 0.5px black solid;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../index.html">home</a>
+    <h1>丸囲み数字</h1>
+
+    <div id="app">
+      <div class="box">あいうえお<span class="circle is-red">12</span></div>
+      <div class="box" style="font-size: 20px">
+        あいうえお<span class="circle is-red">12</span>
+      </div>
+      <div class="box" style="font-size: 60px">
+        あいうえお<span class="circle is-red">12</span>
+      </div>
+      <div class="box">あいうえお<span class="circle is-blue">12</span></div>
+      <div class="box" style="font-size: 20px">
+        あいうえお<span class="circle is-blue">12</span>
+      </div>
+    </div>
+  </body>
+</html>
